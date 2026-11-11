@@ -75,11 +75,38 @@
                <div class="d-flex align-items-center gap-1">
                   <!-- FIX 1: Search button -->
                   <button id="navSearchBtn" title="Search"><i class="fas fa-search"></i></button>
+                  <button id="authOpenBtn" class="nav-auth-btn" type="button"><i class="fas fa-user"></i><span>Sign in</span></button>
+                  <button id="authSignOutBtn" class="nav-auth-btn auth-signout" type="button" hidden><i class="fas fa-sign-out-alt"></i><span>Sign out</span></button>
                   <a href="#menu" class="nav-link nav-cta"><i class="fas fa-shopping-bag me-1"></i>Order Now</a>
                </div>
             </div>
          </div>
       </nav>
+      <div class="auth-overlay" id="authOverlay" aria-hidden="true">
+         <section class="auth-dialog" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+            <button class="auth-close" id="authClose" type="button" aria-label="Close sign in"><i class="fas fa-times"></i></button>
+            <div class="auth-brand"><span><i class="fas fa-utensils"></i></span><small>SARAB MEMBER ACCOUNT</small></div>
+            <h2 id="authTitle">Welcome back</h2>
+            <p class="auth-intro" id="authIntro">Sign in to continue to your account.</p>
+            <form id="authForm" novalidate>
+               <label class="auth-label" id="authNameLabel" for="authName" hidden>Full name</label>
+               <input class="auth-input" id="authName" name="name" type="text" autocomplete="name" placeholder="Your name" hidden>
+               <label class="auth-label" for="authEmail">Email address</label>
+               <input class="auth-input" id="authEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+               <div id="authPasswordGroup">
+                  <label class="auth-label" for="authPassword">Password</label>
+                  <div class="auth-password-wrap">
+                     <input class="auth-input" id="authPassword" name="password" type="password" autocomplete="current-password" placeholder="Your password" required>
+                     <button id="authPasswordToggle" type="button" aria-label="Show password"><i class="far fa-eye"></i></button>
+                  </div>
+               </div>
+               <a class="auth-forgot" id="authForgot" href="#">Forgot password?</a>
+               <p class="auth-message" id="authMessage" role="status" aria-live="polite"></p>
+               <button class="auth-submit" id="authSubmit" type="submit">Sign in <i class="fas fa-arrow-right"></i></button>
+            </form>
+            <p class="auth-switch" id="authSwitch">New to Sarab? <button id="authModeToggle" type="button">Create an account</button></p>
+         </section>
+      </div>
       <!-- ============================================================
          FIX 1 � SEARCH OVERLAY POPUP
          ============================================================ -->
@@ -1224,6 +1251,9 @@
       <script src="js/swiper-bundle.min.js"></script>
       <!-- CounterUp -->
       <script src="js/jquery.magnific-popup.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+      <script src="js/auth-config.js"></script>
+      <script src="js/auth.js"></script>
       <!-- Main js -->
       <script src="js/main.js"></script>
    </body>
